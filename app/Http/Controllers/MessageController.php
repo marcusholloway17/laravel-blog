@@ -14,7 +14,7 @@ class MessageController extends Controller
     public function index()
     {
         $messages = Message::all();
-        return view('dashboard.message.index', compact('messages'));
+        return view('dashboard/message.index', compact('messages'));
     }
 
     /**
@@ -30,7 +30,14 @@ class MessageController extends Controller
      */
     public function store(StoreMessageRequest $request)
     {
-        //
+        Message::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'subject' => $request->subject,
+            'content' => $request->content,
+        ]);
+
+        return redirect()->route('/contact')->with('success', 'Message envoyé');
     }
 
     /**
@@ -38,7 +45,7 @@ class MessageController extends Controller
      */
     public function show(Message $message)
     {
-        //
+        return view('dashboard.message.show', compact('message'));
     }
 
     /**
@@ -46,7 +53,6 @@ class MessageController extends Controller
      */
     public function edit(Message $message)
     {
-        //
     }
 
     /**
@@ -54,7 +60,7 @@ class MessageController extends Controller
      */
     public function update(UpdateMessageRequest $request, Message $message)
     {
-        //
+        $message->update($request - all());
     }
 
     /**
@@ -62,7 +68,7 @@ class MessageController extends Controller
      */
     public function destroy(Message $message)
     {
-        $message-> delete();
+        $message->delete();
         return redirect()->route('dashboard/messages')->with('success', 'Message supprimé avec succès');
     }
 }
