@@ -9,23 +9,33 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
                 <section>
-                    <header>
-                        <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                            {{ __('Liste de catégorie') }}
-                        </h2>
+                    <div class="flex justify-between">
+                        <header>
+                            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                                {{ __('Liste de catégorie') }}
+                            </h2>
 
-                        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                            {{ __("Menu de gestion des catégories d'article") }}
-                        </p>
-                    </header>
+                            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                {{ __("Menu de gestion des catégories d'article") }}
+                            </p>
+                        </header>
+
+                        <button
+                            class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-700 focus:outline-none focus:text-gray-700 dark:focus:text-gray-300 focus:border-gray-300 dark:focus:border-gray-700 transition duration-150 ease-in-out">
+                            <a href="{{ route('categories.create') }}">Ajouter</a>
+                        </button>
+                    </div>
+
                 </section>
 
-                <section>
+                <section style="
+                margin-top: 2rem;">
                     <!-- component -->
                     <div class="bg-white dark:bg-gray-800 shadow-md rounded my-6">
                         <table class="min-w-max w-full table-auto">
                             <thead>
-                                <tr class="bg-gray-200 text-gray-900 dark:text-gray-100 uppercase text-sm leading-normal mt-5">
+                                <tr
+                                    class="bg-gray-200 text-gray-900 dark:text-gray-100 uppercase text-sm leading-normal">
                                     <th class="py-3 px-6 text-left">ID</th>
                                     <th class="py-3 px-6 text-left">Libellé</th>
                                     <th class="py-3 px-6 text-center">Description</th>

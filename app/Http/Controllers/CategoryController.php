@@ -34,6 +34,7 @@ class CategoryController extends Controller
             'label' => $request->label,
             'description' => $request->description,
         ]);
+        return redirect()->route('categories.create')->with('success', 'Nouvelle catégorie ajoutéé');
     }
 
     /**
