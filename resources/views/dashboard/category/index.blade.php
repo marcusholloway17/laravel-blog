@@ -18,9 +18,9 @@
                             {{ __("Menu de gestion des catégories d'article") }}
                         </p>
                     </header>
+                </section>
 
-
-
+                <section>
                     <!-- component -->
                     <div class="overflow-x-auto">
                         <div
@@ -96,7 +96,6 @@
                             </div>
                         </div>
                     </div>
-
                 </section>
             </div>
         </div>
