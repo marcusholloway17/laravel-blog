@@ -3,6 +3,14 @@
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Ajouter une nouvelle catégorie') }}
         </h2>
+
+        @if (session('success'))
+            <div class="bg-teal-100 border-l-4 border-teal-500 text-teal-900 p-4 shadow-md bg-white dark:bg-gray-800 dark:text-gray-100 mt-5"
+                role="alert" x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)">
+                <p class="font-bold">Succès</p>
+                <p class="text-sm">{{ session('success') }}</p>
+            </div>
+        @endif
     </x-slot>
 
     <div class="py-12">
@@ -24,15 +32,6 @@
                     <form action="{{ route('categories.store') }}" method="POST" class="mt-6 space-y-6">
                         @csrf
                         @method('post')
-
-                        @if (session('success'))
-                            <div class="bg-teal-100 border-l-4 border-teal-500 text-teal-900 p-4 shadow-md bg-white dark:bg-gray-800 dark:text-gray-100"
-                                role="alert" x-data="{ show: true }" x-show="show" x-transition
-                                x-init="setTimeout(() => show = false, 2000)">
-                                <p class="font-bold">Succès</p>
-                                <p class="text-sm">{{ session('success') }}</p>
-                            </div>
-                        @endif
 
                         <div>
                             <x-input-label for="label" :value="__('Libellé')" />

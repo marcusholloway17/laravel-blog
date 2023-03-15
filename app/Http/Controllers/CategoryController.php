@@ -62,7 +62,7 @@ class CategoryController extends Controller
             'label' => $request->label,
             'description' => $request->description,
         ]);
-        return redirect()->route('dashboard/categories')->with('success', 'Catégorie mis à jour avec succès');
+        return redirect()->route('categories.index')->with('success', 'Catégorie mis à jour avec succès');
     }
 
     /**
@@ -71,6 +71,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->route('dashboard/categories')->with('success', 'Catégorie supprimée avec succès');
+        return redirect()->route('categories.index')->with('success', 'Catégorie supprimée avec succès');
     }
 }
