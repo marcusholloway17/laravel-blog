@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('subscribers', function (Blueprint $table) {
             $table->id();
+            $table->string('email');
+            $table->boolean('unsubscribe');
+            $table->datetime('unsubscribe_at');
             $table->timestamps();
         });
     }

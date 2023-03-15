@@ -13,7 +13,8 @@ class SubscriberController extends Controller
      */
     public function index()
     {
-        //
+        $subscribers = Subscriber::all()->latest();
+        return view('dashboard.subscribers.index', compact('subscribers'));
     }
 
     /**
@@ -29,7 +30,10 @@ class SubscriberController extends Controller
      */
     public function store(StoreSubscriberRequest $request)
     {
-        //
+        Subscriber::create([
+            'email' => $request->email,
+        ]);
+        return redirect()->route('/')->with('success', 'Souscription réussie');
     }
 
     /**
@@ -53,7 +57,10 @@ class SubscriberController extends Controller
      */
     public function update(UpdateSubscriberRequest $request, Subscriber $subscriber)
     {
-        //
+        $subscriber->update([
+            'unsubscribe' => $request->unsubscribe,
+            'unsubscribe_at' => date.now(),
+        ]);
     }
 
     /**

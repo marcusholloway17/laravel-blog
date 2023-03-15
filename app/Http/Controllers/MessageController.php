@@ -45,6 +45,9 @@ class MessageController extends Controller
      */
     public function show(Message $message)
     {
+        $message->update([
+            'read' => 'true',
+        ]);
         return view('dashboard.message.show', compact('message'));
     }
 
