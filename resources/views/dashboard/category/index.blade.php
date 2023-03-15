@@ -25,7 +25,7 @@
                     <div class="bg-white dark:bg-gray-800 shadow-md rounded my-6">
                         <table class="min-w-max w-full table-auto">
                             <thead>
-                                <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                                <tr class="bg-gray-200 text-gray-900 dark:text-gray-100 uppercase text-sm leading-normal mt-5">
                                     <th class="py-3 px-6 text-left">ID</th>
                                     <th class="py-3 px-6 text-left">Libellé</th>
                                     <th class="py-3 px-6 text-center">Description</th>
