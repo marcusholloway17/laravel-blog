@@ -15,7 +15,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::with(['category', 'user'])->latest()->get();
-        return view('post.index', compact('posts'));
+        return view('dashboard.post.index', compact('posts'));
     }
 
     /**
@@ -24,7 +24,7 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('post.create', compact('categories'));
+        return view('dashboard.post.create', compact('categories'));
     }
 
     /**
@@ -41,7 +41,7 @@ class PostController extends Controller
         ]);
 
 
-        return redirect()->route('dashboard')->with('success', 'Article publié avec succès');
+        return redirect()->route('posts.create')->with('success', 'Article publié avec succès');
     }
 
     /**
@@ -49,7 +49,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('post.show', compact('post'));
+        return view('dashboard.post.show', compact('post'));
     }
 
     /**
@@ -58,7 +58,7 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $categories = Category::all();
-        return view('post.edit', compact('post', 'categories'));
+        return view('dashboard.post.edit', compact('post', 'categories'));
     }
 
     /**
@@ -81,7 +81,7 @@ class PostController extends Controller
 
         $post->update($arrayUpdate);
 
-        return redirect()->route('dashboard')->with('success', 'Article mis à jour avec succès');
+        return redirect()->route('posts.index')->with('success', 'Article mis à jour avec succès');
     }
 
     /**
@@ -90,6 +90,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect()->route('dashboard')->with('success', 'Article supprimé avec succès');
+        return redirect()->route('posts.index')->with('success', 'Article supprimé avec succès');
     }
 }
