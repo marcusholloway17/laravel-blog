@@ -13,8 +13,8 @@ class SubscriberController extends Controller
      */
     public function index()
     {
-        $subscribers = Subscriber::all()->latest();
-        return view('dashboard.subscribers.index', compact('subscribers'));
+        $subscribers = Subscriber::latest()->get();
+        return view('dashboard.subscriber.index', compact('subscribers'));
     }
 
     /**
@@ -59,7 +59,7 @@ class SubscriberController extends Controller
     {
         $subscriber->update([
             'unsubscribe' => $request->unsubscribe,
-            'unsubscribe_at' => date.now(),
+            'unsubscribe_at' => date("Y-m-d H:i:s"),
         ]);
     }
 

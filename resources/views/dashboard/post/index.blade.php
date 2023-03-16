@@ -40,12 +40,9 @@
                         <table class="min-w-max w-full table-auto">
                             <thead class="bg-gray-100 dark:bg-gray-700">
                                 <tr>
-                                    <th scope="col" class="p-4">
-                                        <div class="flex items-center">
-                                            <input id="checkbox-all-search" type="checkbox"
-                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="checkbox-all-search" class="sr-only">checkbox</label>
-                                        </div>
+                                    <th scope="col"
+                                        class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                        {{ __('Image') }}
                                     </th>
                                     <th scope="col"
                                         class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
@@ -75,16 +72,16 @@
                             <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
                                 @foreach ($posts as $post)
                                     <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
-                                        <th scope="row"
+                                        <td scope="row"
                                             class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                            <img class="w-10 h-10 rounded-full"
+                                            <img class="w-10 h-10 rounded-full" style="width: 50px;"
                                                 src="{{ asset('/storage/' . $post->image) }}" alt="">
                                             <div class="pl-3">
                                         <td
                                             class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             {{ Str::limit($post->title, 20, '...') }}</td>
                     </div>
-                    </th>
+                    </td>
 
                     <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
                         {{ Str::limit($post->content, 20, '...') }}</td>
@@ -98,18 +95,21 @@
                         {{ $post->created_at->format('d M Y, H:m') }}
                     </td>
                     <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
-                        <a href="{{ route('posts.edit', $post) }}"
-                            class="text-blue-600 dark:text-blue-500 hover:underline dark:text-white"
-                            style="display: block">Editer</a>
+                        <div class="flex">
+                            <div class="flex items-center mr-1">
+                                <a href="{{ route('posts.edit', $post) }}"
+                                    class="text-blue-600 dark:text-blue-500 hover:underline dark:text-white"
+                                    style="display: block">
+                                    <svg class="w-6 h-6 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 
-                        <form action="{{ route('posts.destroy', $post) }}" method="post" style="display: block">
-                            @csrf
-                            @method('delete')
-                            <button
-                                class="text-red-600 dark:text-blue-500 hover:underline dark:text-red align-items-md-end">
-                                Supprimer
-                            </button>
-                        </form>
+                                </a>
+                            </div>
+                            <div class="flex items-center mr-1">
+                                <a href="{{ route('posts.show', $post) }}"
+                                    class="text-blue-600 dark:text-blue-500 hover:underline dark:text-white"
+                                    style="display: block">Afficher</a>
+                            </div>
+                        </div>
                     </td>
                     </tr>
                     @endforeach
