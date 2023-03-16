@@ -45,9 +45,9 @@ class MessageController extends Controller
      */
     public function show(Message $message)
     {
-        $message->update([
-            'read' => 'true',
-        ]);
+        // Marking message ass readed on show
+        $message->read = true;
+        $message->save();
         return view('dashboard.message.show', compact('message'));
     }
 
@@ -63,7 +63,7 @@ class MessageController extends Controller
      */
     public function update(UpdateMessageRequest $request, Message $message)
     {
-        $message->update($request - all());
+        $message->update($request->all());
     }
 
     /**

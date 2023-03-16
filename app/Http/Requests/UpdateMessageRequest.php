@@ -11,7 +11,7 @@ class UpdateMessageRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,6 +26,7 @@ class UpdateMessageRequest extends FormRequest
             'email' => 'required',
             'subject' => 'required',
             'content' => 'required',
+            'read' => 'sometimes',
         ];
     }
 }
